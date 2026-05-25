@@ -1,0 +1,14 @@
+#!/bin/bash
+
+count=$(timeout 2 /usr/bin/swaync-client --count 2>/dev/null || echo 0)
+dnd=$(timeout 2 /usr/bin/swaync-client --get-dnd 2>/dev/null || echo false)
+
+if [[ $dnd == true ]] && (( ${count:-0} > 0 )); then
+  echo "{\"text\":\"󰂛 $count\",\"tooltip\":\"$count notifications, silenced\",\"class\":\"dnd-notification\"}"
+elif [[ $dnd == true ]]; then
+  echo "{\"text\":\"󰂛\",\"tooltip\":\"Do not disturb\",\"class\":\"dnd\"}"
+elif (( ${count:-0} > 0 )); then
+  echo "{\"text\":\" $count\",\"tooltip\":\"$count notifications\",\"class\":\"notification\"}"
+else
+  echo "{\"text\":\"\",\"tooltip\":\"No notifications\",\"class\":\"none\"}"
+fi

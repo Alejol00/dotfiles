@@ -1,0 +1,10 @@
+#!/bin/bash
+LOCATION="Bahia Blanca, Argentina"
+
+OUTPUT=$(/home/alejo/.local/bin/wttrbar --nerd --lang es --location "$LOCATION" 2>&1)
+if [ $? -ne 0 ] || [ -z "$OUTPUT" ]; then
+  echo '{"text":" ?","tooltip":"Sin datos del clima"}'
+  exit 0
+fi
+
+echo "$OUTPUT" | /usr/bin/jq -c '{text, tooltip: (.tooltip | split("\n\n")[0])}' 2>/dev/null || echo '{"text":" ?","tooltip":"Error al procesar"}'
