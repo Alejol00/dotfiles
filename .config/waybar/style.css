@@ -218,6 +218,11 @@ tooltip {
   border: 2px solid alpha(@foreground, .5);
 }
 
+tooltip label {
+  color: @foreground;
+  text-shadow: none;
+}
+
 
 #custom-screenrecording-indicator {
   animation-timing-function: linear;
