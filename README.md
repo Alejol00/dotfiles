@@ -7,7 +7,7 @@ Este repositorio contiene las configuraciones personales de mi sistema (Arch Lin
 Para restaurar toda la configuración automáticamente en una computadora recién formateada, solo tienes que ejecutar este comando en tu terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/master/instalar-dotfiles.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Alejol00/dotfiles/master/instalar-dotfiles.sh | bash
 ```
 
 *(Recuerda cambiar `TU_USUARIO` y `TU_REPO` por los datos reales de tu GitHub una vez subas este repositorio).*
