@@ -140,6 +140,10 @@
   background: transparent;
 }
 
+window {
+  background: transparent;
+}
+
 scrollbar {
   background: transparent;
 }
