@@ -1,0 +1,42 @@
+{
+  "positionX": "right",
+  "positionY": "top",
+  "control-center-margin-top": 40,
+  "control-center-margin-right": 8,
+  "control-center-width": 400,
+  "control-center-height": 500,
+  "notification-window-width": 380,
+  "control-center-layer": "top",
+  "layer": "overlay",
+  "layer-shell": true,
+  "layer-shell-cover-screen": false,
+  "fit-to-screen": false,
+  "notification-inline-replies": false,
+  "timeout": 10,
+  "relative-timestamps": true,
+  "notification-grouping": false,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "text-empty": "No notifications",
+  "scripts": {
+    "notification-sound": {
+      "exec": "canberra-gtk-play -i message-new-instant &"
+    }
+  },
+  "widgets": [
+    "title",
+    "dnd",
+    "notifications"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "notifications": {}
+  }
+}
