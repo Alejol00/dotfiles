@@ -18,3 +18,5 @@ alias hx=helix
 
 # Added by Antigravity CLI installer
 export PATH="/home/alejo/.local/bin:$PATH"
+
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
