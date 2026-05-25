@@ -23,8 +23,10 @@ else
     git clone --bare "$REPO_URL" "$DOTFILES_DIR"
 fi
 
-# Configurar alias temporal para la ejecución
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# Usar una función en lugar de un alias para que funcione en el script
+function dotfiles {
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
+}
 
 # Respaldar archivos existentes que puedan generar conflictos
 echo ">>> Respaldando configuraciones preexistentes para evitar conflictos..."

@@ -37,7 +37,9 @@ else
     git clone --bare "$REPO_URL" "$DOTFILES_DIR"
 fi
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+function dotfiles {
+   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
+}
 mkdir -p "$HOME/.dotfiles-backup"
 
 if dotfiles checkout; then
