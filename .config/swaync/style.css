@@ -9,7 +9,6 @@
   background: @background;
   border: 1px solid alpha(@foreground, 0.12);
   border-radius: 20px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
   padding: 4px 0;
   opacity: 1;
 }
@@ -133,7 +132,6 @@
 .floating-notifications .notification {
   border: 1px solid alpha(@foreground, 0.15);
   border-radius: 20px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
 }
 
 .blank-window {
