@@ -28,7 +28,7 @@ else
 fi
 
 echo ">>> Instalando dependencias adicionales necesarias (SwayNC, jq, curl)..."
-sudo pacman -S --needed --noconfirm swaync jq curl > /dev/null 2>&1
+sudo pacman -S --needed --noconfirm swaync jq curl
 
 # Usar una función en lugar de un alias para que funcione en el script
 function dotfiles {
@@ -52,7 +52,12 @@ else
     
     # Reintentar la restauración
     echo ">>> Reintentando la restauración..."
-    dotfiles checkout
+    if dotfiles checkout; then
+        echo ">>> ¡Archivos restaurados correctamente en el segundo intento!"
+    else
+        echo ">>> ERROR: No se pudo completar la restauración. Revisa los mensajes de error."
+        exit 1
+    fi
 fi
 
 # Configurar git para no mostrar archivos sin seguimiento
