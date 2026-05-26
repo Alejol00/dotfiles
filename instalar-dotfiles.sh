@@ -16,12 +16,19 @@ DOTFILES_DIR="$HOME/.dotfiles"
 if [ -d "$DOTFILES_DIR" ]; then
     echo ">>> El directorio $DOTFILES_DIR ya existe. Omitiendo la clonación."
 else
-    echo ">>> Por favor, ingresa el enlace de tu repositorio en GitHub (ejemplo: git@github.com:USUARIO/REPO.git o https://github.com/USUARIO/REPO.git):"
-    read -r REPO_URL
+    echo ">>> Por favor, ingresa el enlace de tu repositorio en GitHub."
+    echo ">>> [Presiona ENTER para usar por defecto: https://github.com/Alejol00/dotfiles.git]"
+    read -r REPO_URL < /dev/tty
+    if [ -z "$REPO_URL" ]; then
+        REPO_URL="https://github.com/Alejol00/dotfiles.git"
+    fi
     
     echo ">>> Clonando el repositorio..."
     git clone --bare "$REPO_URL" "$DOTFILES_DIR"
 fi
+
+echo ">>> Instalando dependencias adicionales necesarias (SwayNC, jq, curl)..."
+sudo pacman -S --needed --noconfirm swaync jq curl > /dev/null 2>&1
 
 # Usar una función en lugar de un alias para que funcione en el script
 function dotfiles {
@@ -37,8 +44,11 @@ if dotfiles checkout; then
     echo ">>> ¡Archivos restaurados correctamente!"
 else
     echo ">>> Se detectaron archivos conflictivos. Moviéndolos a ~/.dotfiles-backup..."
-    # Extraer los nombres de los archivos que fallaron y moverlos
-    dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
+    # Extraer los nombres de los archivos que fallaron y moverlos, creando las carpetas necesarias
+    dotfiles checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | while read -r file; do
+        mkdir -p "$HOME/.dotfiles-backup/$(dirname "$file")"
+        mv "$HOME/$file" "$HOME/.dotfiles-backup/$file"
+    done
     
     # Reintentar la restauración
     echo ">>> Reintentando la restauración..."
