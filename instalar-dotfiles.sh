@@ -45,7 +45,7 @@ if dotfiles checkout; then
 else
     echo ">>> Se detectaron archivos conflictivos. Moviéndolos a ~/.dotfiles-backup..."
     # Extraer los nombres de los archivos que fallaron y moverlos, creando las carpetas necesarias
-    dotfiles checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | while read -r file; do
+    dotfiles checkout 2>&1 | awk '/^[[:space:]]+/ {print $1}' | while read -r file; do
         mkdir -p "$HOME/.dotfiles-backup/$(dirname "$file")"
         mv "$HOME/$file" "$HOME/.dotfiles-backup/$file"
     done
