@@ -4,6 +4,13 @@
 
 echo ">>> Iniciando la restauración de las configuraciones del sistema (Dotfiles)..."
 
+# Evitar ejecución como root
+if [ "$EUID" -eq 0 ]; then
+    echo ">>> ERROR: Por favor, no ejecutes este script como root (no uses sudo)."
+    echo ">>> Los dotfiles deben instalarse para tu usuario normal."
+    exit 1
+fi
+
 # Asegurar que Git está instalado
 if ! command -v git &> /dev/null; then
     echo ">>> Git no está instalado. Instalándolo..."
