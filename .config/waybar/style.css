@@ -58,8 +58,7 @@ mpris.empty {
 }
 
 #workspaces {
-    background-color: alpha(@foreground, .05);
-    border: none;
+    background-color: alpha(@foreground, .0);
     padding: 0px;
     margin: 5px 6px;
     margin-right: 0px;
@@ -72,13 +71,13 @@ mpris.empty {
     margin: 0px 1px;
     color: @background;
     border-radius: 15px;
-    background-color: alpha(@foreground, .4);
+    background-color: alpha(@accent, .5);
 }
 
 #workspaces button.active {
     padding: 0px 8px;
     margin: 0px 1px;
-    background-color: alpha(@foreground, .6);
+    background-color: @accent;
     color: @background;
     border-radius: 15px;
 }
@@ -89,7 +88,7 @@ mpris.empty {
 
 #workspaces button.active:hover,
 #workspaces button:hover {
-    background-color: alpha(@foreground, .4);
+    background-color: alpha(@accent, .9);
     color: @background;
     transition: .7s;
 }
@@ -110,7 +109,7 @@ mpris.empty {
 #custom-voxtype,
 #custom-update,
 #custom-notification {
-  background-color: alpha(@foreground, .6);
+  background-color: alpha(@accent, 1);
   color: @background;
   padding: 5px 12px;
   margin: 5px 2px;
@@ -128,7 +127,7 @@ mpris.empty {
 #custom-notification-silencing-indicator:hover,
 #custom-notification:hover,
 #custom-update:hover {
-  background-color: alpha(@foreground, .4);
+  background-color: alpha(@accent, .5);
   transition: .7s;
 }
 
@@ -172,13 +171,13 @@ mpris.empty {
 #custom-screenrecording-indicator.active,
 #custom-idle-indicator.active,
 #custom-notification-silencing-indicator.active {
-  color: #af4b4b;
+  color: @accent;
   background: transparent;
 }
 
 #custom-omarchy,
 #battery {
-  background-color: alpha(@foreground, .6);
+  background-color: alpha(@accent, 1);
   color: @background;
   min-width: 10px;
   border-radius: 15px;
@@ -192,6 +191,7 @@ mpris.empty {
 
 #mpris {
   background: @background;
+  color: @foreground;
   border-radius: 20px;          
   padding: 0px 10px;
   margin: 10px 5px;
@@ -199,6 +199,7 @@ mpris.empty {
 
 #window {
   background: @background;
+  color: @foreground;
   border-radius: 20px;          
   padding: 0px 10px;
   margin: 10px 5px;
@@ -215,7 +216,7 @@ mpris.empty {
 tooltip {
   border-radius: 15px;
   background: @background;
-  border: 2px solid alpha(@foreground, .5);
+  border: 2px solid alpha(@accent, 0.5);
 }
 
 tooltip label {
@@ -234,7 +235,7 @@ tooltip label {
 #custom-screenrecording-indicator.active {
   background-color: transparent;
   padding: 0 13px 0 10px;
-  color: #eb7087;
+  color: @accent;
   animation-name: blink-recording;
   animation-duration: 0.5s;
 }
