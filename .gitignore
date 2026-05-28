@@ -32,3 +32,7 @@
 .DS_Store
 Thumbs.db
 **/nvim/lua/plugins/theme.lua
+# Omarchy-managed symlinks (regenerados por 'omarchy theme apply')
+**/btop/themes/current.theme
+**/mako/config
+**/omarchy/themes/aether
