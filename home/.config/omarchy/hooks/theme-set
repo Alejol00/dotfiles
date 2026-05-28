@@ -1,0 +1,16 @@
+#!/bin/bash
+# omarchy theme-set hook: restore background on theme change
+set -euo pipefail
+
+THEME_NAME=$1
+
+SAVED_BG="$HOME/.config/omarchy/state/bg_${THEME_NAME}"
+if [[ -f "$SAVED_BG" ]]; then
+    BG=$(cat "$SAVED_BG")
+    if [[ -f "$BG" ]]; then
+        omarchy theme bg set "$BG" >/dev/null 2>&1
+        exit 0
+    fi
+fi
+
+omarchy theme bg next >/dev/null 2>&1

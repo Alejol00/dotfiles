@@ -1,0 +1,3 @@
+#!/bin/bash
+# Post-update cleanup: removes orphan packages after omarchy update
+omarchy update orphan pkgs 2>/dev/null || true

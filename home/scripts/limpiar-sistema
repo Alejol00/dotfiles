@@ -1,0 +1,54 @@
+#!/bin/bash
+set -e
+
+echo "=== LIMPIEZA DEL SISTEMA ==="
+
+# 1. Paquetes huérfanos
+echo ""
+echo "→ Paquetes huérfanos..."
+if command -v omarchy &>/dev/null; then
+  omarchy update orphan pkgs 2>/dev/null || echo "   (no hay huérfanos o requiere sudo)"
+fi
+
+# 2. Caché de pacman
+echo ""
+echo "→ Caché de pacman..."
+CACHE_SIZE=$(du -sh /var/cache/pacman/pkg/ 2>/dev/null | cut -f1)
+echo "   Tamaño actual: $CACHE_SIZE"
+if command -v paccache &>/dev/null; then
+  sudo paccache -r -q
+  sudo paccache -ruk0 -q
+elif command -v pacman &>/dev/null; then
+  echo "   paccache no instalado. Instalando pacman-contrib..."
+  sudo pacman -S --noconfirm pacman-contrib 2>/dev/null && sudo paccache -r -q
+fi
+NEW_CACHE_SIZE=$(du -sh /var/cache/pacman/pkg/ 2>/dev/null | cut -f1)
+echo "   Tamaño final: $NEW_CACHE_SIZE"
+
+# 3. Logs del sistema
+echo ""
+echo "→ Logs del sistema (journalctl)..."
+sudo journalctl --vacuum-time=2weeks -q 2>/dev/null
+echo "   Logs anteriores a 2 semanas eliminados"
+journalctl --disk-usage 2>/dev/null
+
+# 4. Caché de usuario
+echo ""
+echo "→ Caché de usuario (~/.cache)..."
+USER_CACHE=$(du -sh ~/.cache 2>/dev/null | cut -f1)
+echo "   Tamaño actual: $USER_CACHE"
+rm -rf ~/.cache/{thumbnails,pip,xdg-desktop-portal,gnome-software,evolution,fontconfig,ibus,libvirt,mesa_shader_cache,sassc,winetricks} 2>/dev/null
+echo "   Cachés de aplicaciones limpiados"
+NEW_USER_CACHE=$(du -sh ~/.cache 2>/dev/null | cut -f1)
+echo "   Tamaño final: $NEW_USER_CACHE"
+
+# 5. npm cache
+echo ""
+echo "→ npm cache..."
+if command -v npm &>/dev/null; then
+  npm cache clean --force 2>/dev/null && echo "   npm cache limpiado" || echo "   no requiere limpieza"
+fi
+
+# Resumen
+echo ""
+echo "=== LIMPIEZA COMPLETADA ==="

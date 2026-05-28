@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+echo "=== SISTEMA: PREPARANDO ACTUALIZACIÓN ==="
+
+# 1. Snapshot antes de actualizar
+echo ""
+echo "→ Creando snapshot del sistema..."
+omarchy snapshot create 2>/dev/null && echo "   Snapshot creado" || echo "   (no se pudo crear snapshot, continuando...)"
+
+# 2. Actualizar sistema
+echo ""
+echo "→ Actualizando sistema..."
+omarchy update -y 2>/dev/null
+
+# 3. Limpiar después
+echo ""
+echo "→ Limpiando..."
+~/scripts/limpiar-sistema 2>/dev/null
+
+echo ""
+echo "=== SISTEMA ACTUALIZADO Y LIMPIO ==="

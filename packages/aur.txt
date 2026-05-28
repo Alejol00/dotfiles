@@ -1,0 +1,6 @@
+brave-bin
+everforest-gtk-theme-git
+gtk-engine-murrine
+preload
+qimgv
+youtubemusic
