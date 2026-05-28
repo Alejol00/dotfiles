@@ -15,9 +15,18 @@
 **/*.bak.*
 **/*.save
 **/*.old
-**/*.png
-**/*.jpg
-**/*.jpeg
+# Theme previews & backup wallpapers (not needed)
+**/preview.png
+**/preview-unlock.png
+**/unlock.png
+**/wallpapers_backup/
+
+# Wallpapers — solo trackear los activamente usados
+**/backgrounds/*.jpg
+**/backgrounds/*.png
+**/backgrounds/*.jpeg
+!**/themes/white/backgrounds/00-japan.jpg
+!**/themes/blackmoney/backgrounds/00-BG6.jpg
 
 # OS
 .DS_Store

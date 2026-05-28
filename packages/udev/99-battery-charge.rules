@@ -1,0 +1,2 @@
+# Set battery charge limit to 80% to preserve battery health
+ACTION=="add", SUBSYSTEM=="power_supply", KERNEL=="BAT0", RUN+="/bin/sh -c 'echo 80 > /sys/class/power_supply/BAT0/charge_control_end_threshold'"
