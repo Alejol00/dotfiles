@@ -1,0 +1,3 @@
+#!/bin/bash
+export WAYLAND_DISPLAY=$(ls /run/user/$(id -u)/wayland-* | head -n1 | xargs basename)
+systemd-run --user --unit="swaybg-$(date +%s%N)" /usr/bin/swaybg "$@" >/dev/null 2>&1

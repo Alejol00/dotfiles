@@ -1,0 +1,111 @@
+[app]
+overall = { bg = "#ffffff" }
+
+[mgr]
+cwd = { fg = "#000000" }
+find_keyword = { fg = "#ffffff", bg = "#6e6e6e" }
+find_position = { fg = "#c0c0c0" }
+symlink_target = { fg = "#3e3e3e" }
+marker_copied = { fg = "#3e3e3e" }
+marker_cut = { fg = "#c0c0c0" }
+marker_marked = { fg = "#2a2a2a" }
+marker_selected = { fg = "#2a2a2a" }
+count_copied = { fg = "#3e3e3e" }
+count_cut = { fg = "#c0c0c0" }
+count_selected = { fg = "#2a2a2a" }
+border_symbol = "│"
+border_style = { fg = "#c0c0c0" }
+
+[indicator]
+parent = { bg = "#c0c0c0" }
+current = { bg = "#6e6e6e" }
+preview = { bg = "#c0c0c0" }
+
+[tabs]
+active = { fg = "#000000", bg = "#c0c0c0" }
+inactive = { fg = "#c0c0c0" }
+
+[mode]
+normal_main = { fg = "#ffffff", bg = "#000000" }
+normal_alt = { fg = "#000000", bg = "#c0c0c0" }
+select_main = { fg = "#ffffff", bg = "#6e6e6e" }
+select_alt = { fg = "#000000", bg = "#c0c0c0" }
+unset_main = { fg = "#ffffff", bg = "#2a2a2a" }
+unset_alt = { fg = "#000000", bg = "#c0c0c0" }
+
+[status]
+overall = { fg = "#000000", bg = "#c0c0c0" }
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+perm_type = { fg = "#3e3e3e" }
+perm_read = { fg = "#3a3a3a" }
+perm_write = { fg = "#2a2a2a" }
+perm_exec = { fg = "#4a4a4a" }
+perm_sep = { fg = "#c0c0c0" }
+progress_label = { fg = "#000000" }
+progress_normal = { fg = "#ffffff", bg = "#6e6e6e" }
+progress_error = { fg = "#ffffff", bg = "#2a2a2a" }
+
+[which]
+mask = { bg = "#c0c0c0" }
+cand = { fg = "#ffffff", bg = "#6e6e6e" }
+rest = { fg = "#c0c0c0" }
+desc = { fg = "#000000" }
+separator = " -> "
+separator_style = { fg = "#c0c0c0" }
+
+[confirm]
+border = { fg = "#c0c0c0" }
+title = { fg = "#000000" }
+body = { fg = "#000000" }
+list = { fg = "#000000" }
+btn_yes = { fg = "#ffffff", bg = "#6e6e6e" }
+btn_no = { fg = "#ffffff", bg = "#c0c0c0" }
+
+[spot]
+border = { fg = "#c0c0c0" }
+title = { fg = "#000000" }
+tbl_col = { fg = "#ffffff", bg = "#6e6e6e" }
+tbl_cell = { bg = "#c0c0c0" }
+
+[notify]
+title_info = { fg = "#3e3e3e" }
+title_warn = { fg = "#4a4a4a" }
+title_error = { fg = "#2a2a2a" }
+
+[pick]
+border = { fg = "#c0c0c0" }
+active = { fg = "#ffffff", bg = "#6e6e6e" }
+inactive = { fg = "#000000" }
+
+[input]
+border = { fg = "#c0c0c0" }
+title = { fg = "#000000" }
+value = { fg = "#000000" }
+selected = { fg = "#ffffff", bg = "#6e6e6e" }
+
+[cmp]
+border = { fg = "#c0c0c0" }
+active = { fg = "#ffffff", bg = "#6e6e6e" }
+inactive = { fg = "#000000" }
+
+[tasks]
+border = { fg = "#c0c0c0" }
+title = { fg = "#000000" }
+hovered = { bg = "#c0c0c0" }
+
+[help]
+on = { fg = "#6e6e6e" }
+run = { fg = "#000000" }
+desc = { fg = "#c0c0c0" }
+hovered = { bg = "#c0c0c0" }
+footer = { fg = "#000000" }
+
+[filetype]
+rules = [
+  { mime = "image/*", fg = "#2e2e2e" },
+  { mime = "{audio,video}/*", fg = "#3e3e3e" },
+  { mime = "inode/empty", fg = "#4a4a4a" },
+  { url = "*", is = "orphan", fg = "#2a2a2a" },
+  { url = "*/", fg = "#1a1a1a" },
+]

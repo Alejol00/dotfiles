@@ -4,6 +4,12 @@ set -euo pipefail
 
 THEME_NAME=$1
 
+# Apply yazi theme
+YAZI_THEME="$HOME/.config/omarchy/current/theme/yazi.toml"
+if [[ -f "$YAZI_THEME" ]]; then
+    cp "$YAZI_THEME" "$HOME/.config/yazi/theme.toml"
+fi
+
 SAVED_BG="$HOME/.config/omarchy/state/bg_${THEME_NAME}"
 if [[ -f "$SAVED_BG" ]]; then
     BG=$(cat "$SAVED_BG")

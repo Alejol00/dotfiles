@@ -1,0 +1,25 @@
+# Sensitive
+**/git/config
+**/opencode/opencode.json
+**/.git/**
+**/.gitkeep
+**/.gitattributes
+**/.gitmodules
+
+# Large / generated
+**/node_modules/
+**/.cache/
+**/workspace-wallpapers*/
+**/hypr/hyprland.conf
+**/*.bak
+**/*.bak.*
+**/*.save
+**/*.old
+**/*.png
+**/*.jpg
+**/*.jpeg
+
+# OS
+.DS_Store
+Thumbs.db
+**/nvim/lua/plugins/theme.lua
